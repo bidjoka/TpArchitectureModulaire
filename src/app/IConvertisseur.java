@@ -1,5 +1,6 @@
 package app;
 
-public interface IConvertisseur {
-	void convertir();
+import java.awt.event.ActionListener;
+
+public interface IConvertisseur extends ActionListener{
 }

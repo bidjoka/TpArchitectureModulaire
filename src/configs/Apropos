@@ -1,4 +1,4 @@
 name=a propos
-className=plugins.EuroDollar
-categorie=ISolde
+className=plugins.Calculateur
+categorie=ICalculateur
 description=a propos de nous

@@ -1,4 +1,4 @@
 name=afficheur2
-className=Afficheur
+className=plugins.Afficheur
 categorie=IAfficheur
 description=ma superbe description 2

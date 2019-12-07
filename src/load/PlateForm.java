@@ -13,8 +13,10 @@ import app.Application;
 
 public class PlateForm {
 
+	//map de descriteurs
 	static Map<String, List<Descriptor>> allDescriptors;
 
+	//méthode pour charger tous les descripteurs
 	public void loadAllDescriptors() throws IOException{
 		Map<String, List<Descriptor>> listOfPlugin =  new HashMap<>();
 		
@@ -74,7 +76,7 @@ public class PlateForm {
 		//mise des descripteurs selon les interfaces
 		List<Descriptor> alexandre = plateform.getDescriptor("IConvertisseur");
 		List<Descriptor> simon = plateform.getDescriptor("IAfficheur");
-		List<Descriptor> pierre = plateform.getDescriptor("ISolde");
+		List<Descriptor> pierre = plateform.getDescriptor("ICalculateur");
 		
 		//lancement de l'application
 		@SuppressWarnings("unused")

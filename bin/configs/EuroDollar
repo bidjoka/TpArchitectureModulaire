@@ -1,0 +1,4 @@
+name=euro en dollars
+className=plugins.EuroDollar
+categorie=IConvertisseur
+description=convertir l'euro en dollars

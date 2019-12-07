@@ -1,0 +1,4 @@
+name=euro en franc suisse
+className=plugins.EuroFranc
+categorie=IConvertisseur
+description=convertir l'euro en franc suisse

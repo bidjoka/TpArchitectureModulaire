@@ -1,0 +1,4 @@
+name=afficheur2
+className=Afficheur
+categorie=IAfficheur
+description=ma superbe description 2

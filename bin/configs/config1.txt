@@ -1,0 +1,4 @@
+name=afficheur1
+className=plugins.Afficheur
+categorie=IAfficheur
+description=ma superbe description 1

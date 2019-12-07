@@ -80,8 +80,8 @@ public class Application extends JFrame {
 				if(param.get(i).getText().equals(listdescriptor.get(j).getName()))
 					param.get(i).addActionListener(new ActionListener(){
 						public void actionPerformed(ActionEvent arg0) {
-		                @SuppressWarnings("unused")
 						IConvertisseur plugin = (IConvertisseur) plateform.loadPlugin(listdescriptor.get(j));
+		                plugin.convertir();
 		                System.out.println(listdescriptor.get(j).getCategorie());
 		            }
 		        });
@@ -113,7 +113,7 @@ public class Application extends JFrame {
 							System.out.println(listdescriptor2.get(l).getCategorie());
 		                @SuppressWarnings("unused")
 						ICalculateur plugin = (ICalculateur) plateform.loadPlugin(listdescriptor2.get(l));
-		                
+		               
 		            }
 		        });
 		    }

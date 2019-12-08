@@ -1,5 +1,7 @@
 package plugins;
 
+import java.text.DecimalFormat;
+
 import javax.swing.JOptionPane;
 
 import app.IConvertisseur;
@@ -9,13 +11,15 @@ public class EuroFranc implements IConvertisseur{
 	@Override
 	public void convertir() {
 		double resultat = 0;
-	   	 
-		double nombre1 = Double.parseDouble(JOptionPane.showInputDialog(null, "Entrez une valeur")) ;
-		
+		double nombre1 = 0;
+		DecimalFormat df = new DecimalFormat("0.00"); 
+	   	try { 
+		nombre1 = Double.parseDouble(JOptionPane.showInputDialog(null, "Entrez une valeur !")) ;
+	   	}catch(NullPointerException e){}		
 		resultat = nombre1 * 3.29;
-
-		JOptionPane.showMessageDialog(null, "elle vaut " + resultat + " franc suisse");
-		
+		if(resultat!=0) {
+		JOptionPane.showMessageDialog(null, "elle vaut " + df.format(resultat) + " dollars");
+		}
 	}
 
 

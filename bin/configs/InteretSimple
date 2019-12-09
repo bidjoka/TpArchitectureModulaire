@@ -1,0 +1,5 @@
+name=interet simple
+className=plugins.InteretSimple
+categorie=IInteret
+description=Calcul d'interet de pret
+autorun=true

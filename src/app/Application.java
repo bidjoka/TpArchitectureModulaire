@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 
 import load.Descriptor;
 import load.PlateForm;
@@ -18,6 +19,7 @@ public class Application extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	
+	static JOptionPane jop = new JOptionPane();
 	static int l = 0;
 	static int k = 0;
 	static int j = 0;
@@ -26,11 +28,11 @@ public class Application extends JFrame {
 	//barre de menu
 	private JMenuBar menuBar = new JMenuBar();	
 	//menu convertisseur
-	private JMenu convertisseur = new JMenu("Convertisseur");
+	private JMenu menualexandre = new JMenu("Convertisseur");
 	//menu afficher
-	private JMenu menusimon = new JMenu("simon");
+	private JMenu menusimon = new JMenu("A propos");
 	//menu solde
-	private JMenu menupierre = new JMenu("pierre");
+	private JMenu menupierre = new JMenu("Calcul d'intérêt");
 	//list d'item d'alexandre
 	ArrayList<JMenuItem> ItemAlexandre = new ArrayList<JMenuItem>();
 	//List d'item de simon
@@ -39,12 +41,11 @@ public class Application extends JFrame {
 	ArrayList<JMenuItem> ItemPierre = new ArrayList<JMenuItem>();
 	
 	//méthode de création de listes des ItemMenu pour des interfaces de plugin 
-	public static ArrayList<JMenuItem> creationItem(ArrayList<JMenuItem> param, List<Descriptor> plug, String inter){
+	public static ArrayList<JMenuItem> creationItem(List<Descriptor> plug, String inter){
 		ArrayList<JMenuItem> Item = new ArrayList<JMenuItem>();
 		plug = plateform.getDescriptor(inter);
 		for(int i = 0; i < plug.size(); i++)
 	    { 
-	      System.out.println("donnée à l'indice " + i + " = " + plug.get(i).getName());
 	      JMenuItem item = new JMenuItem(plug.get(i).getName());
 	      Item.add(item);
 	    } 
@@ -77,14 +78,15 @@ public class Application extends JFrame {
 			listdescriptor.get(j);
 			for(int i = 0; i < param.size(); i++)
 		    { 
-				if(param.get(i).getText().equals(listdescriptor.get(j).getName()))
+				if(param.get(i).getText().equals(listdescriptor.get(j).getName())
+						&& listdescriptor.get(j).getAutorun().equals("true")){
 					param.get(i).addActionListener(new ActionListener(){
 						public void actionPerformed(ActionEvent arg0) {
-						IConvertisseur plugin = (IConvertisseur) plateform.loadPlugin(listdescriptor.get(j));
-		                plugin.convertir();
-		                System.out.println(listdescriptor.get(j).getCategorie());
-		            }
-		        });
+							IAfficheur plugin = (IAfficheur) plateform.loadPlugin(listdescriptor.get(j));
+			                plugin.afficher();
+						}
+					});	
+				}
 		    }
 		}
 		j = 0;
@@ -92,37 +94,35 @@ public class Application extends JFrame {
 			listdescriptor1.get(k);
 			for(int i = 0; i < param1.size(); i++)
 		    { 
-				if(param1.get(i).getText().equals(listdescriptor1.get(k).getName()))
+				if(param1.get(i).getText().equals(listdescriptor1.get(k).getName())
+						&& listdescriptor1.get(k).getAutorun().equals("true")) {
 					param1.get(i).addActionListener(new ActionListener(){
 						public void actionPerformed(ActionEvent arg0) {
-		                @SuppressWarnings("unused")
-						IAfficheur plugin = (IAfficheur) plateform.loadPlugin(listdescriptor1.get(k));
-		                System.out.println(listdescriptor1.get(k).getCategorie());
-		            }
-		        });
-		    }
+			                @SuppressWarnings("unused")
+							IConvertisseur plugin = (IConvertisseur) plateform.loadPlugin(listdescriptor1.get(k));
+			                plugin.convertir();
+						}
+					});
+		    	}
+			}
 		}
 		k=0;
 		for(l = 0; l < listdescriptor2.size(); l++) {
 			listdescriptor2.get(l);
 			for(int i = 0; i < param2.size(); i++)
 		    { 
-				if(param2.get(i).getText().equals(listdescriptor2.get(l).getName()))
+				if(param2.get(i).getText().equals(listdescriptor2.get(l).getName())
+						&& listdescriptor2.get(k).getAutorun().equals("true")) {
 					param2.get(i).addActionListener(new ActionListener(){
 						public void actionPerformed(ActionEvent arg0) {
-							System.out.println(listdescriptor2.get(l).getCategorie());
-		                @SuppressWarnings("unused")
-						ICalculateur plugin = (ICalculateur) plateform.loadPlugin(listdescriptor2.get(l));
-		               
-		            }
-		        });
+							IInteret plugin = (IInteret) plateform.loadPlugin(listdescriptor2.get(l));
+			                plugin.calculerInterets();
+						}
+					});
+				}
 		    }
 		}
 		l=0;
-	}
-	
-	public static void ar(ArrayList<JMenuItem> param,List<Descriptor> listdescriptor) {
-		
 	}
 	
 	//constructeur
@@ -132,14 +132,15 @@ public class Application extends JFrame {
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    this.setLocationRelativeTo(null);
 	    //liste
-	    ArrayList<JMenuItem> ItemMenuAlexandre = Application.creationItem(ItemAlexandre, alexandre, "IConvertisseur");
-	    ArrayList<JMenuItem> ItemMenuSimon = Application.creationItem(ItemSimon, simon, "IAfficheur");
-	    ArrayList<JMenuItem> ItemMenuPierre = Application.creationItem(ItemPierre, pierre, "ICalculateur");
+	    ArrayList<JMenuItem> ItemMenuAlexandre = Application.creationItem(alexandre, "IConvertisseur");
+	    ArrayList<JMenuItem> ItemMenuSimon = Application.creationItem(simon, "IAfficheur");
+	    ArrayList<JMenuItem> ItemMenuPierre = Application.creationItem(pierre, "IInteret");
 	    
-	    Application.action(ItemMenuAlexandre, ItemMenuSimon, ItemMenuPierre, alexandre, simon, pierre);
+	    
 	    //création des menus 
-	    JMenuBar menuB = Application.PlacerPlugin(ItemMenuAlexandre, ItemMenuSimon, ItemMenuPierre, convertisseur,menusimon,menupierre, menuBar);
+	    JMenuBar menuB = Application.PlacerPlugin(ItemMenuSimon, ItemMenuAlexandre, ItemMenuPierre, menusimon,menualexandre,menupierre, menuBar);
 	    this.setJMenuBar(menuB);
+	    Application.action(ItemMenuSimon, ItemMenuAlexandre, ItemMenuPierre, simon, alexandre, pierre);
 	    //création des actions pour les menus		
 	    this.setVisible(true);
 	}

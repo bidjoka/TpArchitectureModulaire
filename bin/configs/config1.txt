@@ -1,4 +1,5 @@
-name=afficheur1
+name=a propos du convertisseur
 className=plugins.Afficheur
 categorie=IAfficheur
 description=ma superbe description 1
+autorun=true

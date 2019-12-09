@@ -5,14 +5,14 @@ public class Descriptor {
 	private String description;
 	private String className;
 	private String categorie;
-	private String status;
 	private String autorun;
 	
-	public Descriptor(String name, String desc, String className, String categorie) {
+	public Descriptor(String name, String desc, String className, String categorie, String autorun) {
 		this.name = name;
 		this.className = className;
 		this.categorie = categorie;
 		this.description = desc;
+		this.autorun = autorun;
 	}
 	
 	public String getName() {
@@ -43,15 +43,7 @@ public class Descriptor {
 	public void setCategorie(String categorie) {
 		this.categorie = categorie;
 	}
-
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
+	
 	public String getAutorun() {
 		return autorun;
 	}

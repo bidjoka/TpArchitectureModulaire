@@ -1,0 +1,5 @@
+name=interet compose
+className=plugins.InteretCompose
+categorie=IInteret
+description=Calcul d'interet de pret
+autorun=true

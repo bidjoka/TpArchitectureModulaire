@@ -1,4 +1,5 @@
-name=afficheur2
+name=a propos du calcul d'intérêt
 className=plugins.Afficheur
 categorie=IAfficheur
 description=ma superbe description 2
+autorun=false

@@ -2,3 +2,4 @@ name=euro en livre
 className=plugins.EuroLivre
 categorie=IConvertisseur
 description=convertir l'euro en livre
+autorun=false

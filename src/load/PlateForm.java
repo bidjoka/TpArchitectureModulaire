@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.Properties;
 
 import app.Application;
+import app.Moniteur;
 
 public class PlateForm {
 
@@ -31,8 +32,9 @@ public class PlateForm {
 			String descriptionTmp = prop.getProperty("description");
 			String classNameTmp = prop.getProperty("className");
 			String categorieTmp = prop.getProperty("categorie");
+			String autorun = prop.getProperty("autorun");
 			
-			Descriptor descTmp = new Descriptor(nameTmp, descriptionTmp, classNameTmp, categorieTmp);
+			Descriptor descTmp = new Descriptor(nameTmp, descriptionTmp, classNameTmp, categorieTmp, autorun);
 			
 			if(listOfPlugin.get(categorieTmp) == null) {
 				List<Descriptor> listOfDesc = new ArrayList<Descriptor>();
@@ -68,7 +70,7 @@ public class PlateForm {
 		return o;
 	}
 	
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException, ClassNotFoundException {
 		//instance de plateforme
 		PlateForm plateform = new PlateForm();
 		//chargement des descripteurs
@@ -76,8 +78,12 @@ public class PlateForm {
 		//mise des descripteurs selon les interfaces
 		List<Descriptor> alexandre = plateform.getDescriptor("IConvertisseur");
 		List<Descriptor> simon = plateform.getDescriptor("IAfficheur");
-		List<Descriptor> pierre = plateform.getDescriptor("ICalculateur");
+		List<Descriptor> pierre = plateform.getDescriptor("IInteret");
 		
+		Moniteur mon = new Moniteur();
+		mon.verification(alexandre, simon, pierre);
+		
+	
 		//lancement de l'application
 		@SuppressWarnings("unused")
 		Application appli = new Application(alexandre, simon, pierre);

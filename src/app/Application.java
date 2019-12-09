@@ -31,7 +31,7 @@ public class Application extends JFrame {
 	//menu afficher
 	private JMenu menusimon = new JMenu("A propos");
 	//menu solde
-	private JMenu menupierre = new JMenu("Calcul d'intérêt");
+	private JMenu menupierre = new JMenu("Calcul d'interet");
 	//list d'item d'alexandre
 	ArrayList<JMenuItem> ItemAlexandre = new ArrayList<JMenuItem>();
 	//List d'item de simon

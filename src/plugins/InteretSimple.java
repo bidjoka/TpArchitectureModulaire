@@ -8,27 +8,36 @@ public class InteretSimple implements IInteret {
 
 	@Override
 	public void calculerInterets() {
-		double montant = 0;
-		int nbAnnee = 0;
-		double interet = 0;
+		double montant = getValeurOfEntry("Entrez le montant empruntï¿½", "Veuillez renseigner un montant valide");
+		int nbAnnee = (int)getValeurOfEntry("Entrez le nombre d'annï¿½e de l'emprunt", "Veuillez renseigner un nombre d'annï¿½es valide");
+		double interet = getValeurOfEntry("Entrez le taux de l'emprunt", "Veuillez renseigner un taux valide");;
+				
+		double sommeInterets = montant * (interet/100) * nbAnnee;
+		JOptionPane.showMessageDialog(null, "Vous paierez " + sommeInterets + " ï¿½ d'interets pour cette emprunt"); 
+		
+	}
+	double getValeurOfEntry(String reason, String erreur) {
+		double value = 0;
 		try {
-			while(montant == 0) {
+			while(value == 0) {
 				try {
-					montant = Double.parseDouble(JOptionPane.showInputDialog(null, "Entrez une valeur !")) ;
-				}catch(NumberFormatException number) { 
-					montant = 0;
+					value = Double.parseDouble(JOptionPane.showInputDialog(null, reason)) ;
+				}catch(NumberFormatException number) {
+					value = 0;
 				}
-				if(montant == 0) {
+				if(value == 0) {
 					JOptionPane.showMessageDialog(null, 
-					         "Veuillez entrer un chiffre valide",
+					         erreur,
 					         " Erreur ",
 					         JOptionPane.WARNING_MESSAGE);
 				}
 			}
-	   	}catch(NullPointerException e){}	
-		double sommeInterets = montant * (interet/100) * nbAnnee;
-		JOptionPane.showMessageDialog(null, "Vous paierez " + sommeInterets + " € d'interets pour cette emprunt"); 
-		
+		}catch(NullPointerException e){
+			value = 0;
+		}	
+		return value;
 	}
 
 }
+
+

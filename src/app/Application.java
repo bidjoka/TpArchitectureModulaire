@@ -19,7 +19,6 @@ public class Application extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	
-	static JOptionPane jop = new JOptionPane();
 	static int l = 0;
 	static int k = 0;
 	static int j = 0;
@@ -32,7 +31,7 @@ public class Application extends JFrame {
 	//menu afficher
 	private JMenu menusimon = new JMenu("A propos");
 	//menu solde
-	private JMenu menupierre = new JMenu("Calcul d'intérêt");
+	private JMenu menupierre = new JMenu("Calcul d'intÃ©rÃªt");
 	//list d'item d'alexandre
 	ArrayList<JMenuItem> ItemAlexandre = new ArrayList<JMenuItem>();
 	//List d'item de simon
@@ -40,7 +39,7 @@ public class Application extends JFrame {
 	//List d'item de pierre
 	ArrayList<JMenuItem> ItemPierre = new ArrayList<JMenuItem>();
 	
-	//méthode de création de listes des ItemMenu pour des interfaces de plugin 
+	//mÃ©thode de crÃ©ation de listes des ItemMenu pour des interfaces de plugin 
 	public static ArrayList<JMenuItem> creationItem(List<Descriptor> plug, String inter){
 		ArrayList<JMenuItem> Item = new ArrayList<JMenuItem>();
 		plug = plateform.getDescriptor(inter);
@@ -51,7 +50,7 @@ public class Application extends JFrame {
 	    } 
 		return Item;	
 	}
-	//méthode de création des menu qui conviennent aux interfaces
+	//mÃ©thode de crÃ©ation des menu qui conviennent aux interfaces
 	public static JMenuBar PlacerPlugin(ArrayList<JMenuItem> param, ArrayList<JMenuItem> param1, ArrayList<JMenuItem> param2, 
 										JMenu menu, JMenu menu1, JMenu menu2, JMenuBar menuBar) {
 		for(int i = 0; i < param.size(); i++)
@@ -71,7 +70,7 @@ public class Application extends JFrame {
 		menuBar.add(menu2);
 		return menuBar;
 	}
-	//méthode pour mettre sur pied les actions de nos plugins
+	//mÃ©thode pour mettre sur pied les actions de nos plugins
 	public static void action(ArrayList<JMenuItem> param, ArrayList<JMenuItem> param1, ArrayList<JMenuItem> param2, 
 			List<Descriptor> listdescriptor, List<Descriptor> listdescriptor1, List<Descriptor> listdescriptor2) {
 		for(j = 0; j < listdescriptor.size(); j++) {
@@ -137,11 +136,11 @@ public class Application extends JFrame {
 	    ArrayList<JMenuItem> ItemMenuPierre = Application.creationItem(pierre, "IInteret");
 	    
 	    
-	    //création des menus 
+	    //crÃ©ation des menus 
 	    JMenuBar menuB = Application.PlacerPlugin(ItemMenuSimon, ItemMenuAlexandre, ItemMenuPierre, menusimon,menualexandre,menupierre, menuBar);
 	    this.setJMenuBar(menuB);
 	    Application.action(ItemMenuSimon, ItemMenuAlexandre, ItemMenuPierre, simon, alexandre, pierre);
-	    //création des actions pour les menus		
+	    //crÃ©ation des actions pour les menus		
 	    this.setVisible(true);
 	}
 		

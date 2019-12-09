@@ -10,7 +10,6 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
 
 import load.Descriptor;
 import load.PlateForm;
@@ -81,7 +80,7 @@ public class Application extends JFrame {
 						&& listdescriptor.get(j).getAutorun().equals("true")){
 					param.get(i).addActionListener(new ActionListener(){
 						public void actionPerformed(ActionEvent arg0) {
-							IAfficheur plugin = (IAfficheur) plateform.loadPlugin(listdescriptor.get(j));
+							IAfficheur plugin = (IAfficheur) plateform.loadPlugin(getDescriptorAction(listdescriptor, arg0.getActionCommand()));
 			                plugin.afficher();
 						}
 					});	
@@ -97,8 +96,7 @@ public class Application extends JFrame {
 						&& listdescriptor1.get(k).getAutorun().equals("true")) {
 					param1.get(i).addActionListener(new ActionListener(){
 						public void actionPerformed(ActionEvent arg0) {
-			                @SuppressWarnings("unused")
-							IConvertisseur plugin = (IConvertisseur) plateform.loadPlugin(listdescriptor1.get(k));
+							IConvertisseur plugin = (IConvertisseur) plateform.loadPlugin(getDescriptorAction(listdescriptor1, arg0.getActionCommand()));
 			                plugin.convertir();
 						}
 					});
@@ -114,7 +112,7 @@ public class Application extends JFrame {
 						&& listdescriptor2.get(k).getAutorun().equals("true")) {
 					param2.get(i).addActionListener(new ActionListener(){
 						public void actionPerformed(ActionEvent arg0) {
-							IInteret plugin = (IInteret) plateform.loadPlugin(listdescriptor2.get(l));
+							IInteret plugin = (IInteret) plateform.loadPlugin(getDescriptorAction(listdescriptor2, arg0.getActionCommand()));
 			                plugin.calculerInterets();
 						}
 					});
@@ -124,6 +122,16 @@ public class Application extends JFrame {
 		l=0;
 	}
 	
+	static Descriptor getDescriptorAction(List<Descriptor> liste, String name){
+		Descriptor desc = null;
+		for(int i=0; i<liste.size(); i++){
+			if(liste.get(i).getName().equals(name)){
+				desc = liste.get(i);
+			}
+		}
+		return desc;
+	}
+
 	//constructeur
 	public Application(List<Descriptor> alexandre, List<Descriptor> simon, List<Descriptor> pierre) throws IOException {		
 		super("notre appli");

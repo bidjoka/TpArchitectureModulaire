@@ -17,7 +17,7 @@ public class PlateForm {
 	//map de descriteurs
 	static Map<String, List<Descriptor>> allDescriptors;
 
-	//méthode pour charger tous les descripteurs
+	//mï¿½thode pour charger tous les descripteurs
 	public void loadAllDescriptors() throws IOException{
 		Map<String, List<Descriptor>> listOfPlugin =  new HashMap<>();
 		
@@ -56,7 +56,7 @@ public class PlateForm {
 	}
 	
 	public Object loadPlugin(Descriptor desc) {
-		//crée la classe, l'instance, le plugin
+		//crï¿½e la classe, l'instance, le plugin
 	
 		Class<?> cl;
 		Object o = null;
@@ -64,7 +64,6 @@ public class PlateForm {
 			cl = Class.forName(desc.getClassName());
 			o = cl.newInstance();
 		} catch (ClassNotFoundException	|InstantiationException | IllegalAccessException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return o;

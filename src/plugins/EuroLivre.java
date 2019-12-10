@@ -14,9 +14,11 @@ public class EuroLivre implements IConvertisseur{
 		double nombre1 = 0;
 		DecimalFormat df = new DecimalFormat("0.00"); 
 		nombre1 = getValeurOfEntry("Entrez un montant a convertir", "Veuillez renseigner un montant valide");
-		resultat = nombre1 * 2.52;
-		if(resultat!=0) {
-			JOptionPane.showMessageDialog(null, "elle vaut " + df.format(resultat) + " dollars");
+		if(nombre1 != 0.0){
+			resultat = nombre1 * 2.52;
+			if(resultat!=0) {
+				JOptionPane.showMessageDialog(null, "elle vaut " + df.format(resultat) + " dollars");
+			}
 		}
 	}
 

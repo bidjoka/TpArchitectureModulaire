@@ -9,12 +9,16 @@ public class InteretSimple implements IInteret {
 	@Override
 	public void calculerInterets() {
 		double montant = getValeurOfEntry("Entrez le montant emprunt", "Veuillez renseigner un montant valide");
-		int nbAnnee = (int)getValeurOfEntry("Entrez le nombre d'annee de l'emprunt", "Veuillez renseigner un nombre d'annees valide");
-		double interet = getValeurOfEntry("Entrez le taux de l'emprunt", "Veuillez renseigner un taux valide");;
-				
-		double sommeInterets = montant * (interet/100) * nbAnnee;
-		JOptionPane.showMessageDialog(null, "Vous paierez " + sommeInterets + " euros d'interets pour cette emprunt"); 
-		
+		if(montant != 0.0){
+			int nbAnnee = (int)getValeurOfEntry("Entrez le nombre d'annee de l'emprunt", "Veuillez renseigner un nombre d'annees valide");
+			if(nbAnnee != 0.0){
+				double interet = getValeurOfEntry("Entrez le taux de l'emprunt", "Veuillez renseigner un taux valide");;
+				if(interet != 0.0){		
+					double sommeInterets = montant * (interet/100) * nbAnnee;
+					JOptionPane.showMessageDialog(null, "Vous paierez " + sommeInterets + " euros d'interets pour cette emprunt"); 
+				}
+			}
+		}
 	}
 	double getValeurOfEntry(String reason, String erreur) {
 		double value = 0;

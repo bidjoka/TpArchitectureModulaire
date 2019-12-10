@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.Properties;
 
 import app.Application;
+import app.IAfficheur;
 import app.Moniteur;
 
 public class PlateForm {
@@ -18,7 +19,8 @@ public class PlateForm {
 	static Map<String, List<Descriptor>> allDescriptors;
 
 	//m�thode pour charger tous les descripteurs
-	public void loadAllDescriptors() throws IOException{
+	public IAfficheur loadAllDescriptors() throws IOException{
+		IAfficheur viewToShow = null;
 		Map<String, List<Descriptor>> listOfPlugin =  new HashMap<>();
 		
 		File repertoire = new File("src/configs");
@@ -35,7 +37,10 @@ public class PlateForm {
 			String autorun = prop.getProperty("autorun");
 			
 			Descriptor descTmp = new Descriptor(nameTmp, descriptionTmp, classNameTmp, categorieTmp, autorun);
-			
+			String firstView = prop.getProperty("firstView");
+			if(firstView != null && firstView.equals("true") && autorun.equals("true")) {
+				viewToShow = (IAfficheur)this.loadPlugin(descTmp);
+			}
 			if(listOfPlugin.get(categorieTmp) == null) {
 				List<Descriptor> listOfDesc = new ArrayList<Descriptor>();
 				listOfDesc.add(descTmp);
@@ -49,6 +54,7 @@ public class PlateForm {
 		}
 		
 		allDescriptors = listOfPlugin;
+		return viewToShow;
 	}
 	
 	public List<Descriptor> getDescriptor(String categorie){
@@ -73,7 +79,7 @@ public class PlateForm {
 		//instance de plateforme
 		PlateForm plateform = new PlateForm();
 		//chargement des descripteurs
-		plateform.loadAllDescriptors();
+		IAfficheur mainApp = plateform.loadAllDescriptors();
 		//mise des descripteurs selon les interfaces
 		List<Descriptor> alexandre = plateform.getDescriptor("IConvertisseur");
 		List<Descriptor> simon = plateform.getDescriptor("IAfficheur");
@@ -81,11 +87,9 @@ public class PlateForm {
 		
 		Moniteur mon = new Moniteur();
 		mon.verification(alexandre, simon, pierre);
-		
 	
 		//lancement de l'application
-		@SuppressWarnings("unused")
-		Application appli = new Application(alexandre, simon, pierre);
+		mainApp.afficher(alexandre, simon, pierre);
 	}
 
 }

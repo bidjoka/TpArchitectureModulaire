@@ -1,5 +1,5 @@
 name=a propos du convertisseur
 className=plugins.AproposConvertisseur
-categorie=IAfficheur
+categorie=IDisplayAPropos
 description=ma superbe description 1
-autorun=true
+autorun=false

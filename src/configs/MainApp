@@ -1,0 +1,6 @@
+name=Lunch app
+className=plugins.Display
+categorie=IAfficheur
+description=Fenetre principale
+autorun=true
+firstView=true

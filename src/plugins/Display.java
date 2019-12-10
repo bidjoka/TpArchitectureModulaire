@@ -14,6 +14,7 @@ import app.IAfficheur;
 import load.Descriptor;
 
 public class Display extends JFrame implements IAfficheur {
+	private static final long serialVersionUID = 1L;
 	
 	public Display() throws IOException {
 		super("notre appli");
@@ -41,7 +42,7 @@ public class Display extends JFrame implements IAfficheur {
 		
 	    //liste
 	    ArrayList<JMenuItem> ItemMenuAlexandre = Application.creationItem(alexandre, "IConvertisseur");
-	    ArrayList<JMenuItem> ItemMenuSimon = Application.creationItem(simon, "IAfficheur");
+	    ArrayList<JMenuItem> ItemMenuSimon = Application.creationItem(simon, "IDisplayAPropos");
 	    ArrayList<JMenuItem> ItemMenuPierre = Application.creationItem(pierre, "IInteret");
 	   
 	    //création des menus 

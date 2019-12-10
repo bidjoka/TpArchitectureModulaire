@@ -16,8 +16,6 @@ import load.PlateForm;
 
 public class Application {
 
-	private static final long serialVersionUID = 1L;
-	
 	static int l = 0;
 	static int k = 0;
 	static int j = 0;
@@ -64,12 +62,14 @@ public class Application {
 			for(j = 0; j < listdescriptor.size(); j++) {
 				listdescriptor.get(j);
 				for(int i = 0; i < param.size(); i++)
-			    { 
+			    {
+					System.out.println(listdescriptor.get(j).getName());
 					if(param.get(i).getText().equals(listdescriptor.get(j).getName())){
 						param.get(i).addActionListener(new ActionListener(){
 							public void actionPerformed(ActionEvent arg0) {
+								
 								IDisplayAPropos plugin = (IDisplayAPropos) plateform.loadPlugin(getDescriptorAction(listdescriptor, arg0.getActionCommand()));
-				                plugin.afficher();
+								plugin.afficher();
 							}
 						});	
 					}

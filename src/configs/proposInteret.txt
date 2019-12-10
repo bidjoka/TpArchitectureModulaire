@@ -1,5 +1,0 @@
-name=a propos du calcul d'interet
-className=plugins.AproposInteret
-categorie=IDisplayAPropos
-description=ma superbe description 2
-autorun=false

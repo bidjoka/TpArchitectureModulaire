@@ -82,7 +82,7 @@ public class PlateForm {
 		IAfficheur mainApp = plateform.loadAllDescriptors();
 		//mise des descripteurs selon les interfaces
 		List<Descriptor> alexandre = plateform.getDescriptor("IConvertisseur");
-		List<Descriptor> simon = plateform.getDescriptor("IAfficheur");
+		List<Descriptor> simon = plateform.getDescriptor("IDisplayAPropos");
 		List<Descriptor> pierre = plateform.getDescriptor("IInteret");
 		
 		Moniteur mon = new Moniteur();

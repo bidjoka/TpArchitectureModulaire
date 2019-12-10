@@ -36,7 +36,7 @@ public class Application {
 	}
 	//méthode de création des menu qui conviennent aux interfaces
 	public static JMenuBar PlacerPlugin(ArrayList<JMenuItem> param, ArrayList<JMenuItem> param1, ArrayList<JMenuItem> param2, 
-										JMenu menu, JMenu menu1, JMenu menu2, JMenuBar menuBar) {
+										JMenu menu, JMenu menu1, JMenu menu2, JMenuBar topMenu) {
 		for(int i = 0; i < param.size(); i++)
 	    { 
 	      menu.add(param.get(i));
@@ -49,10 +49,10 @@ public class Application {
 	    { 
 	      menu2.add(param2.get(i));
 	    }
-		menuBar.add(menu);
-		menuBar.add(menu1);
-		menuBar.add(menu2);
-		return menuBar;
+		topMenu.add(menu);
+		topMenu.add(menu1);
+		topMenu.add(menu2);
+		return topMenu;
 	}
 	//méthode pour mettre sur pied les actions de nos plugins
 	public static void action(ArrayList<JMenuItem> param, ArrayList<JMenuItem> param1, ArrayList<JMenuItem> param2, 

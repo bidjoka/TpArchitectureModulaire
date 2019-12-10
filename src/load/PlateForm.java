@@ -80,15 +80,15 @@ public class PlateForm {
 		//chargement des descripteurs
 		IAfficheur mainApp = plateform.loadAllDescriptors();
 		//mise des descripteurs selon les interfaces
-		List<Descriptor> alexandre = plateform.getDescriptor("IConvertisseur");
-		List<Descriptor> simon = plateform.getDescriptor("IDisplayAPropos");
-		List<Descriptor> pierre = plateform.getDescriptor("IInteret");
+		List<Descriptor> listConvertisseur = plateform.getDescriptor("IConvertisseur");
+		List<Descriptor> listAPropos = plateform.getDescriptor("IDisplayAPropos");
+		List<Descriptor> listInteret = plateform.getDescriptor("IInteret");
 		
 		Moniteur mon = new Moniteur();
-		mon.verification(alexandre, simon, pierre);
+		mon.verification(listConvertisseur, listAPropos, listInteret);
 	
 		//lancement de l'application
-		mainApp.afficher(alexandre, simon, pierre);
+		mainApp.afficher(listConvertisseur, listAPropos, listInteret);
 	}
 
 }

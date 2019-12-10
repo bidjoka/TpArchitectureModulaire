@@ -17,38 +17,32 @@ public class Display extends JFrame implements IAfficheur {
 	private static final long serialVersionUID = 1L;
 	
 	public Display() throws IOException {
-		super("notre appli");
+		super("Boite à outil bancaire");
 		this.setSize(400, 200);
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    this.setLocationRelativeTo(null);
 	}
 	
-	private JMenuBar menuBar = new JMenuBar();	
+	private final JMenuBar topMenu = new JMenuBar();	
 	//menu convertisseur
-	private JMenu menualexandre = new JMenu("Convertisseur");
+	private final JMenu convertisseurMenu = new JMenu("Convertisseur");
 	//menu afficher
-	private JMenu menusimon = new JMenu("A propos");
+	private final JMenu aProposMenu = new JMenu("A propos");
 	//menu solde
-	private JMenu menupierre = new JMenu("Calcul d'interet");
-	//list d'item d'alexandre
-	ArrayList<JMenuItem> ItemAlexandre = new ArrayList<JMenuItem>();
-	//List d'item de simon
-	ArrayList<JMenuItem> ItemSimon = new ArrayList<JMenuItem>();
-	//List d'item de pierre
-	ArrayList<JMenuItem> ItemPierre = new ArrayList<JMenuItem>();
+	private final JMenu calculInteretMenu = new JMenu("Calcul d'interet");
 	
 	@Override
-	public void afficher(List<Descriptor> alexandre, List<Descriptor> simon, List<Descriptor> pierre) {
+	public void afficher(final List<Descriptor> listConvertisseur, final List<Descriptor> listAPropos, final List<Descriptor> listCalculInteret) {
 		
 	    //liste
-	    ArrayList<JMenuItem> ItemMenuAlexandre = Application.creationItem(alexandre, "IConvertisseur");
-	    ArrayList<JMenuItem> ItemMenuSimon = Application.creationItem(simon, "IDisplayAPropos");
-	    ArrayList<JMenuItem> ItemMenuPierre = Application.creationItem(pierre, "IInteret");
+	    final ArrayList<JMenuItem> itemConvertisseurMenu = Application.creationItem(listConvertisseur, "IConvertisseur");
+	    final ArrayList<JMenuItem> itemAProposMenu = Application.creationItem(listAPropos, "IDisplayAPropos");
+	    final ArrayList<JMenuItem> itemCalculInteretMenu = Application.creationItem(listCalculInteret, "IInteret");
 	   
 	    //création des menus 
-	    JMenuBar menuB = Application.PlacerPlugin(ItemMenuSimon, ItemMenuAlexandre, ItemMenuPierre, menusimon,menualexandre,menupierre, menuBar);
+	    final JMenuBar menuB = Application.PlacerPlugin(itemAProposMenu, itemConvertisseurMenu, itemCalculInteretMenu, aProposMenu,convertisseurMenu,calculInteretMenu, topMenu);
 	    this.setJMenuBar(menuB);
-	    Application.action(ItemMenuSimon, ItemMenuAlexandre, ItemMenuPierre, simon, alexandre, pierre);
+	    Application.action(itemAProposMenu, itemConvertisseurMenu, itemCalculInteretMenu, listAPropos, listConvertisseur, listCalculInteret);
 	    //création des actions pour les menus		
 	    this.setVisible(true);
 	}

@@ -8,8 +8,8 @@ public class InteretCompose implements IInteret {
 
 	@Override
 	public void calculerInterets() {
-		double montant = getValeurOfEntry("Entrez le montant emprunté", "Veuillez renseigner un montant valide");
-		int nbAnnee = (int)getValeurOfEntry("Entrez le nombre d'année de l'emprunt", "Veuillez renseigner un nombre d'années valide");
+		double montant = getValeurOfEntry("Entrez le montant emprunt", "Veuillez renseigner un montant valide");
+		int nbAnnee = (int)getValeurOfEntry("Entrez le nombre d'annee de l'emprunt", "Veuillez renseigner un nombre d'annï¿½es valide");
 		double interet = getValeurOfEntry("Entrez le taux de l'emprunt", "Veuillez renseigner un taux valide");;
 			
 		double sommeARembourserParAn = montant / nbAnnee;
@@ -22,7 +22,7 @@ public class InteretCompose implements IInteret {
 			sommeInterets += interets;
 			sommeRestante = sommeRestante - (sommeARembourserParAn - interets);
 		}
-		JOptionPane.showMessageDialog(null, "Vous paierez " + sommeInterets + " € d'interets pour cette emprunt"); 
+		JOptionPane.showMessageDialog(null, "Vous paierez " + sommeInterets + " euros d'interets pour cette emprunt"); 
 	}
 	
 	double getValeurOfEntry(String reason, String erreur) {

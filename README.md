@@ -16,4 +16,5 @@ Une fois le projet installé, il suffit simplement de le lancer via le bouton `R
 Deux fonctionnalités sont actuellement disponibles :
 - Convertisseur monétaire
 - Calculateur d'opération financière. Pour l'instant, deux opérations sont disponibles : emrpunt par intérêt simple et emprunt par intérêt composé. Les chiffres à virgules doivent être écrits par un point, par exemple `5.7`
+
 Les menus `à propos` décrits les différentes fonctionnalités.
